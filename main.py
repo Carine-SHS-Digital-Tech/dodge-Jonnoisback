@@ -32,7 +32,7 @@ class FallingObject(pygame.sprite.Sprite):
 class Character(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image=pygame.Surface([10,1400])
+        self.image=pygame.Surface([50,68])
         self.image.set_colorkey(black)
         self.rect=self.image.get_rect()
         self.rect.x=310
@@ -57,7 +57,7 @@ pygame.init()                               # Pygame is initialised (starts runn
 
 screen = pygame.display.set_mode([700,500]) # Set the width and height of the screen [width,height]
 pygame.display.set_caption("Dodge")       # Name your window
-background_image=pygame.image.load("OrchardBackground.jpg").convert()
+background_image=pygame.image.load("img_3.png").convert()
 done = False                                # Loop until the user clicks the close button.
 clock = pygame.time.Clock()                 # Used to manage how fast the screen updates
 black    = (   0,   0,   0)                 # Define some colors using rgb values.  These can be
@@ -104,7 +104,7 @@ while done == False:
         nextObject=FallingObject()
         nextObject.setImage("Apple.png")
         allFallingObjects.add(nextObject)
-        nextApple=pygame.time.get_ticks() + 10000
+        nextApple=pygame.time.get_ticks() + 1500
 
     for eachObject in (allFallingObjects.sprites()):
         eachObject.moveFallingObjects(5)
@@ -122,6 +122,7 @@ while done == False:
     textImg=font.render(str(score),1,white)
     screen.blit( textImg, (10,10) )
     pygame.display.flip()                   # Go ahead and update the screen with what we've drawn.
-    clock.tick(20)                          # Limit to 20 frames per second
+    clock.tick(20)
+print(score)# Limit to 20 frames per second
 
 pygame.quit()                               # Close the window and quit.
